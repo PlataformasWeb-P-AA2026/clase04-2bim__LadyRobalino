@@ -11,6 +11,9 @@ class Estudiante(models.Model):
         return "%s %s %s" % (self.nombre, 
                 self.apellido,
                 self.cedula)
+    
+    def obtener_numeros_telefonicos(self):
+        return self.numeros_telefonicos.all()
 
 class NumeroTelefonico(models.Model):
     telefono = models.CharField(max_length=100)
@@ -20,4 +23,13 @@ class NumeroTelefonico(models.Model):
 
     def __str__(self):
         return "%s %s" % (self.telefono, self.tipo)
-
+    
+    # funcion para obtener la operadora del numero telefonico, si empieza con 09 es claro, 
+    # si empieza con 08 es movistar, si empieza con otros diferentes son convencionales
+    def obtener_operadora(self):
+        if self.telefono.startswith("09"):
+            return "Claro"
+        elif self.telefono.startswith("08"):
+            return "Movistar"
+        else:
+            return "Convencional"
