@@ -27,9 +27,9 @@ class NumeroTelefonico(models.Model):
     # funcion para obtener la operadora del numero telefonico, si empieza con 09 es claro, 
     # si empieza con 08 es movistar, si empieza con otros diferentes son convencionales
     def obtener_operadora(self):
-        if self.telefono.startswith("09"):
+        if self.telefono.startswith("099"):
             return "Claro"
-        elif self.telefono.startswith("08"):
+        elif self.telefono.startswith("088"):
             return "Movistar"
         else:
             return "Convencional"
